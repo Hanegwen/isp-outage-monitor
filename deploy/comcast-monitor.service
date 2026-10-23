@@ -1,0 +1,16 @@
+[Unit]
+Description=Comcast outage monitor (connectivity checker)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+User=@SERVICE_USER@
+WorkingDirectory=/opt/comcast-monitor
+EnvironmentFile=/etc/comcast-monitor.env
+StateDirectory=comcast-monitor
+ExecStart=/usr/bin/python3 -m monitor.checker
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target

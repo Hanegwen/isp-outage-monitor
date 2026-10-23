@@ -1,0 +1,9 @@
+[Unit]
+Description=Comcast outage monitor - speed test once a day
+
+[Timer]
+OnCalendar=*-*-* 21:00:00
+RandomizedDelaySec=15min
+
+[Install]
+WantedBy=timers.target

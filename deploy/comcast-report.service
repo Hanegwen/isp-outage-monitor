@@ -1,0 +1,17 @@
+[Unit]
+Description=Comcast outage monitor - email last month's report
+After=network-online.target
+Wants=network-online.target
+StartLimitIntervalSec=1d
+StartLimitBurst=12
+
+[Service]
+Type=oneshot
+User=@SERVICE_USER@
+WorkingDirectory=/opt/comcast-monitor
+EnvironmentFile=/etc/comcast-monitor.env
+StateDirectory=comcast-monitor
+ExecStart=/usr/bin/python3 -m monitor.report --send
+# If the internet is down at send time, try again later.
+Restart=on-failure
+RestartSec=30min

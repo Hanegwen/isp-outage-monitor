@@ -1,0 +1,10 @@
+[Unit]
+Description=Comcast outage monitor - speed test
+
+[Service]
+Type=oneshot
+User=@SERVICE_USER@
+WorkingDirectory=/opt/comcast-monitor
+EnvironmentFile=/etc/comcast-monitor.env
+StateDirectory=comcast-monitor
+ExecStart=/usr/bin/python3 -m monitor.speedtest

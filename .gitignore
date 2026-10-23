@@ -1,0 +1,10 @@
+__pycache__/
+*.pyc
+*.db
+*.env
+!config.example.env
+report*.html
+.venv/
+*.sqlite*
+*.db-wal
+*.db-shm
